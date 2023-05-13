@@ -50,11 +50,11 @@ function App() {
 
   function validate(a,b){
     if(isNaN(a)&&isNaN(b)){
-      setError("Enter valid input in boxes");
+      setError("Enter a valid input in boxes");
       return false;
     }
     if(isNaN(a)){
-      setError("Enter valid input in box 1");
+      setError("Enter a valid input in box 1");
       return false;
     }
     else if(isNaN(b)){
