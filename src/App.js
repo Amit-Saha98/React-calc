@@ -73,9 +73,9 @@ function App() {
     <div className="App">
      <div style={{color:"white"}}>
         <h1>React Calculator</h1>
-        <input onChange={handle1} type='number' style={{backgroundColor:"black",border:"1px solid white"}}></input>
+        <input onChange={handle1} type='number' style={{backgroundColor:"black",border:"1px solid white",color:"white"}}></input>
         <br></br>
-        <input onChange={handle2} type='number' style={{backgroundColor:"black",border:"1px solid white"}}></input>
+        <input onChange={handle2} type='number' style={{backgroundColor:"black",border:"1px solid white",color:"white"}}></input>
         <br></br>
         <button onClick={()=>calc('+')}>+</button>
         <button onClick={()=>calc('-')}>-</button>
