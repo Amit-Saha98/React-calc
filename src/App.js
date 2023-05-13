@@ -9,6 +9,7 @@ function App() {
   const [error,setError] = useState();
   const [ans,setAns] = useState();
   const[res,setRes]= useState(false);
+  const [flag,setFlag]=useState(false);
 
   const handle1 = (event)=>{
     setip1(parseInt(event.target.value));
@@ -36,15 +37,30 @@ function App() {
         setAns(ip1/ip2);
       }
       setRes(true);
+      setFlag(false);
       }
 
       else {
-        setError("enter valid input");
+        setFlag(true);
+        setRes(false);
+        setAns();
       }
+
   }
 
   function validate(a,b){
-    if(a===isNaN||b===isNaN)return false;
+    if(isNaN(a)&&isNaN(b)){
+      setError("Enter valid input in boxes");
+      return false;
+    }
+    if(isNaN(a)){
+      setError("Enter valid input in box 1");
+      return false;
+    }
+    else if(isNaN(b)){
+      setError("Enter valid input in box 2");
+      return false;
+    }
     return true;
   }
 
@@ -55,18 +71,18 @@ function App() {
 
   return (
     <div className="App">
-     <div>
+     <div style={{color:"white"}}>
         <h1>React Calculator</h1>
-        <input onChange={handle1} type='number'></input>
+        <input onChange={handle1} type='number' style={{backgroundColor:"black",border:"1px solid white"}}></input>
         <br></br>
-        <input onChange={handle2} type='number'></input>
+        <input onChange={handle2} type='number' style={{backgroundColor:"black",border:"1px solid white"}}></input>
         <br></br>
         <button onClick={()=>calc('+')}>+</button>
         <button onClick={()=>calc('-')}>-</button>
         <button onClick={()=>calc('*')}>*</button>
         <button onClick={()=>calc('/')}>/</button>
         <p>Result = {ans}</p>
-        <p style={{color:"red"}}>{error}</p>
+        <p style={flag ?{"display":"block",color:"red"}:{display:"none"}}>{error}</p>
         <p style={res===false ?{display:'none'}: {"display":"block",color:"green"}}>Success: Your result is shown above</p>
      </div>
     </div>
